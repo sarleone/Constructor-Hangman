@@ -23,7 +23,7 @@ var guessString = "";
 
 // START GAME
 // =========================================================================
-//Intro to the game--do you want to play?
+// Intro to the game--do you want to play?
 console.log("Welcome to the hangman game you can play in terminal!" +
 "\nA random word in Spanish will be selected" +
 "\nThe number of letters in the word will be represented as '_'" +

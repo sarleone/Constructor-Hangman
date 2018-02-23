@@ -30,7 +30,7 @@ function Letter(char) {
 // Export this fuction for Word.js
 module.exports = Letter;
 
-//to test
-// var A = new Letter("A");
+// testing===============================================
+// var A = new Letter("a");
 // console.log(A+" ");
 // console.log(A);
