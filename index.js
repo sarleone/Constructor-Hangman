@@ -10,7 +10,9 @@ const rl = readline.createInterface({
 
 // Game variables
 var words = ["hola", "gustar", "caliente", "fuego", "fiesta", "cerveza", "caramba",
-    "bonito", "querer"];
+    "bonito", "querer", "comida", "comer", "familia", "biblioteca", "universidad", 
+    "gato", "perro", "pajaro", "poder", "buenas", "mano", "casa", "carro", "matematicas"
+];
 var guesses = [];
 var wordInPlay = words[Math.floor(Math.random() * words.length + 1)];
 var word = new Word(wordInPlay);

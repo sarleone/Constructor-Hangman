@@ -57,8 +57,9 @@ function Word(input) {
                 correct = true;
                 this.numbersCorrect++;
             }
-            console.log(this.numbersCorrect);
-            console.log(correct);
+            // testing=========================
+            // console.log(this.numbersCorrect);
+            // console.log(correct);
         }
         return correct;
     }
