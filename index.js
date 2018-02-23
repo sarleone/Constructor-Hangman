@@ -13,7 +13,7 @@ var words = ["hola", "gustar", "caliente", "fuego", "fiesta", "cerveza", "caramb
     "bonito", "querer"];
 var guesses = [];
 var wordInPlay = words[Math.floor(Math.random() * words.length + 1)];
-var word = new Word(wordInPlay)
+var word = new Word(wordInPlay);
 var numGuesses = 10;
 var guessString = "";
 //testing
@@ -37,8 +37,9 @@ rl.on("line", (input) => {
         rl.close();
     // Otherwise we start game and set variables to a new game
     } else if (input == "yes") {
-        wordInPlay = new Word(words[Math.floor(Math.random() * words.length + 1)]);
-        chances = 10;
+        wordInPlay = words[Math.floor(Math.random() * words.length + 1)];
+        word = new Word(wordInPlay)
+        numGuesses = 10;
         guessString = "";
         guesses = [];
     // if the guess is not already found in the guesses array
@@ -50,9 +51,9 @@ rl.on("line", (input) => {
         // if the entry is not found in the word
         if (word.guessed(input) == false) {
             console.log ("Try again!");
-            // reduce number of chances to guess
-            chances--;
-            console.log("You got this! You have " + chances + " left!");
+            // reduce number of numGuesses to guess
+            numGuesses--;
+            console.log("You got this! You have " + numGuesses + " left!");
         }
     // if the guess is already found in the guesses array    
     } else if (guesses.indexOf(input) != -1) {
@@ -62,11 +63,11 @@ rl.on("line", (input) => {
         // show the word
         word.showLetters();
         console.log("Congrats on the Hangman win. You get mad clout.");
-    // if you don't guess the word in 10 chances
-    } else if (chances == 0) {
+    // if you don't guess the word in 10 numGuesses
+    } else if (numGuesses == 0) {
         console.log("GAME OVER! The word was " + wordInPlay +"." +
         "\nWould you like to play again? Enter yes or no.");
-    // if there are still some chances left show the guesses already made and update the 'wordInPlay'
+    // if there are still some numGuesses left show the guesses already made and update the 'wordInPlay'
     } else {
         console.log("Letters guessed: " + guessString);
         word.showLetters();
