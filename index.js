@@ -5,33 +5,39 @@
 var Word = require('./Word.js');
 var prompt = require('prompt');
 
-// // Solution will be held here
-// var chosenWord = "";
-// // This will break the solution into individual letters to be stored
-// var lettersInChosenWord = [];
-// // This will be the number of blanks we show based on the solution
-// var numBlanks = 0;
-// // Holds a mix of blank and solved letters
-// var newGame = new Word(chosenWord);
-
-// // Holds all of the wrong guesses
-// var wrongGuesses = [];
-
-// // Game counters
-// var winCounter = 0;
-// var lossCounter = 0;
-// var numGuesses = 10;
-
-
+var guesses = [];
+var wordInPlay = new Word(this.words[Math.floor(Math.random() * this.words.length)]);
+var word = new Word(wordInPlay);
+var numGuesses = 10;
 
 //Prompts the user to guess and keeps track of the user's remaining guesses
-
 prompt.start();
 console.log("Welcome to the hangman game you can play in terminal!" +
 "\nA random word in Spanish will be selected" +
 "\nThe number of letters in the word will be represented as '_'" +
-"\nYou only have 10 guesses to get it right so chose wisely!" + 
-"\nReady to get started? (Y/N)");
+"\nYou only have 10 guesses to get it right so chose wisely!" 
+);
+
+// var property = {
+//     name: 'yesno',
+//     message: 'Are you ready to play?!',
+//     validator: /y[es]*|n[o]?/,
+//     warning: 'Must respond yes or no',
+//     default: 'no'
+//   };
+//   //
+//   // Get the simple yes or no property
+//   //
+//   prompt.get(property, function (err, result) {
+//     //
+//     // Log the results.
+//     //
+//     console.log('Command-line input received:');
+//     console.log('  result: ' + result.yesno);
+//   //});
+//   if (result.yesno === "y" || "yes") {
+
+//   }
 
 // FUNCTIONS
 // =========================================================================
@@ -46,10 +52,12 @@ game = {
 
     startGame: function(word) {
         this.numGuesses = 10;
-        this.wordInPlay = new Word(this.words[Math.floor(Math.random() * this.words.length)]);
-        this.blanksAndSuccess = new Word(showLetters(this.wordInPlay));
+
+        //this.blanksAndSuccess = this.wordInPlay.;
         this.wrongGuesses = [];
-        this.promptUser();
+        //this.promptUser();
+        //testing
+        console.log(this.wordInPlay);
 ;
     }
 }
@@ -64,4 +72,4 @@ function startGame() {
 
 // MAIN PROCESS 
 // =========================================================================
-startGame();
+game.startGame();
