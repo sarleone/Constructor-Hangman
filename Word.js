@@ -10,23 +10,37 @@
 // function defined in Letter.js) that displays the character or 
 // an underscore and concatenate those together.
 
+// GLOBAL VARIABLES 
+// =========================================================================
+// set variable that requires function from Letter.js
 var Letter = require('./Letter.js');
-//testing
-//console.log(Letter);
-//testing
-//input = "apple";
+// testing=========================
+// console.log(Letter);
+// testing=========================
+// input = "apple";
 
+// FUNCTION
+// =========================================================================
+
+// Word Constructor 
 function Word(input) {
+    // empty array to store and array with "Letter" qualities
     var letArr = [];
-    for (i=0; i < input.length; i++) {
-        
-        letArr.push(new Letter(input[i].toUpperCase()));
+    // add "Letter" qualities
+    for (i=0; i < input.length; i++) { 
+        letArr.push(new Letter(input[i].toLowerCase()));
     }
+    // set 'word' to the array you created
     this.word = letArr;
+    // set the game to 0 guesses so far...
     this.numbersCorrect = 0;
-    console.log(this.word);
+    // testing=========================
+    // console.log(this.word);
+    // this will display '_' for letters of the chosen word at the start of the game
     this.showLetters = function(){
+        // creating an empty string where we will store our '_'
         var wordString = "";
+       
         for(var i = 0; i<this.word.length; i++)
         {
                 wordString += this.word[i] + " ";
@@ -38,8 +52,8 @@ function Word(input) {
     // defined in Letter.js)
     this.guessed = function(char) {
         var correct = false;
-        for (var i = 0; this.letArr.length; i++) {
-            if(letArr[i].isMatch(char)) {
+        for (var i = 0; this.word.length; i++) {
+            if(this.word[i].isMatch(char)) {
                 correct = true;
                 this.numbersCorrect++;
             }
@@ -51,9 +65,10 @@ function Word(input) {
 
 }
 
-//var word = new Word(input);
-//word.showLetters();
-//word.guessed("a");
+// testing=========================
+// var word = new Word(input);
+// word.showLetters();
+// word.guessed("a");
 // if (A.isMatch("A")
 // console.log(A+" ");
 module.exports = Word;
