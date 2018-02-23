@@ -11,25 +11,25 @@
 // an underscore and concatenate those together.
 
 var Letter = require('./Letter.js');
+//testing
 //console.log(Letter);
-
-input = "apple";
+//testing
+//input = "apple";
 
 function Word(input) {
     var letArr = [];
     for (i=0; i < input.length; i++) {
         
-        letArr.push(new Letter(input[i]));
+        letArr.push(new Letter(input[i].toUpperCase()));
     }
-    //console.log(letArr);
-    this.letArr = letArr;
-    this.numbersCorrect;
-    console.log(this.letArr);
+    this.word = letArr;
+    this.numbersCorrect = 0;
+    console.log(this.word);
     this.showLetters = function(){
         var wordString = "";
-        for(var i = 0; i<this.letArr.length; i++)
+        for(var i = 0; i<this.word.length; i++)
         {
-                wordString += this.letArr[i] + " ";
+                wordString += this.word[i] + " ";
         }
         console.log(wordString);
     }
@@ -46,6 +46,7 @@ function Word(input) {
             console.log(this.numbersCorrect);
             console.log(correct);
         }
+        return correct;
     }
 
 }
