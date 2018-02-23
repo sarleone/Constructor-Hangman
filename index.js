@@ -18,9 +18,11 @@ var wordInPlay = words[Math.floor(Math.random() * words.length + 1)];
 var word = new Word(wordInPlay);
 var numGuesses = 10;
 var guessString = "";
-//testing
-//console.log(wordInPlay);    
+// testing======================================
+// console.log(wordInPlay);    
 
+// START GAME
+// =========================================================================
 //Intro to the game--do you want to play?
 console.log("Welcome to the hangman game you can play in terminal!" +
 "\nA random word in Spanish will be selected" +
@@ -28,9 +30,6 @@ console.log("Welcome to the hangman game you can play in terminal!" +
 "\nYou only have 10 guesses to get it right so chose wisely!"
 );
 
-
-// FUNCTIONS
-// =========================================================================
 // display the word in play as '_'
 word.showLetters();
 // If user enters that they do not want to play we close game
@@ -75,6 +74,7 @@ rl.on("line", (input) => {
         console.log("Letters guessed: " + guessString);
         word.showLetters();
     }  
+
 // Party pooper? No game for you. Boy bye.     
 }).on("close", () => {
     console.log("See ya next time!");
