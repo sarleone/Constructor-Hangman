@@ -59,19 +59,21 @@ rl.on("line", (input) => {
     } else if (guesses.indexOf(input) != -1) {
         console.log("You already tried guessing this letter!");
     // if you guessed every letter in the word
-    } if (word.numberCorrect == word.word.length) {
+    } if (word.numbersCorrect == word.word.length) {
         // show the word
         word.showLetters();
-        console.log("Congrats on the Hangman win. You get mad clout.");
+        console.log("Congrats on the Hangman win. You get mad clout. Would you like to play again? Enter 'yes' or 'no'.");
     // if you don't guess the word in 10 numGuesses
     } else if (numGuesses == 0) {
         console.log("GAME OVER! The word was " + wordInPlay +"." +
         "\nWould you like to play again? Enter yes or no.");
     // if there are still some numGuesses left show the guesses already made and update the 'wordInPlay'
     } else {
+        // show the letters guessed after each entry and display the updated 'wordInPlay'
         console.log("Letters guessed: " + guessString);
         word.showLetters();
-    }   
+    }  
+// Party pooper? No game for you. Boy bye.     
 }).on("close", () => {
     console.log("See ya next time!");
     process.exit(0);
