@@ -52,7 +52,7 @@ function Word(input) {
     // defined in Letter.js)
     this.guessed = function(char) {
         var correct = false;
-        for (var i = 0; this.word.length; i++) {
+        for (var i = 0; i < this.word.length; i++) {
             if(this.word[i].isMatch(char)) {
                 correct = true;
                 this.numbersCorrect++;
@@ -68,7 +68,7 @@ function Word(input) {
 // testing=========================
 // var word = new Word(input);
 // word.showLetters();
-// word.guessed("a");
+// word.guessed("z");
 // if (A.isMatch("A")
-// console.log(A+" ");
+// console.log(A + " ");
 module.exports = Word;

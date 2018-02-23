@@ -12,7 +12,8 @@ const rl = readline.createInterface({
 var words = ["hola", "gustar", "caliente", "fuego", "fiesta", "cerveza", "caramba",
     "bonito", "querer"];
 var guesses = [];
-var wordInPlay = new Word(words[Math.floor(Math.random() * words.length + 1)]);
+var wordInPlay = words[Math.floor(Math.random() * words.length + 1)];
+var word = new Word(wordInPlay)
 var numGuesses = 10;
 var guessString = "";
 //testing
@@ -29,7 +30,7 @@ console.log("Welcome to the hangman game you can play in terminal!" +
 // FUNCTIONS
 // =========================================================================
 // display the word in play as '_'
-wordInPlay.showLetters();
+word.showLetters();
 // If user enters that they do not want to play we close game
 rl.on("line", (input) => {
     if (input == "no") {
@@ -40,12 +41,37 @@ rl.on("line", (input) => {
         chances = 10;
         guessString = "";
         guesses = [];
-    }
-    
-})
-
-// How we start the game
-
-
-// MAIN PROCESS 
-// =========================================================================
+    // if the guess is not already found in the guesses array
+    } else if (guesses.indexOf(input) == -1) {
+        // add their choice to the guesses array
+        guesses.push(input);
+        // add these guesses to guessString
+        guessString += input + " ";
+        // if the entry is not found in the word
+        if (word.guessed(input) == false) {
+            console.log ("Try again!");
+            // reduce number of chances to guess
+            chances--;
+            console.log("You got this! You have " + chances + " left!");
+        }
+    // if the guess is already found in the guesses array    
+    } else if (guesses.indexOf(input) != -1) {
+        console.log("You already tried guessing this letter!");
+    // if you guessed every letter in the word
+    } if (word.numberCorrect == word.word.length) {
+        // show the word
+        word.showLetters();
+        console.log("Congrats on the Hangman win. You get mad clout.");
+    // if you don't guess the word in 10 chances
+    } else if (chances == 0) {
+        console.log("GAME OVER! The word was " + wordInPlay +"." +
+        "\nWould you like to play again? Enter yes or no.");
+    // if there are still some chances left show the guesses already made and update the 'wordInPlay'
+    } else {
+        console.log("Letters guessed: " + guessString);
+        word.showLetters();
+    }   
+}).on("close", () => {
+    console.log("See ya next time!");
+    process.exit(0);
+});
